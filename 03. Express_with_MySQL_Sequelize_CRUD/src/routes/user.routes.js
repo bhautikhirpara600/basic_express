@@ -12,12 +12,13 @@ import {
   updateUserValidation,
 } from "../validators/user.validator.js";
 import { userValidate } from "../middlewares/user.validate.js";
+import { verifyToken } from "../middlewares/authorize.js";
 
 const router = express.Router();
 
 router.post("/", createUserValidation, userValidate, createUser);
 router.get("/", getUsers);
-router.get("/:id", idValidation, userValidate, getUser);
+router.get("/:id", idValidation, userValidate, verifyToken, getUser);
 router.put(
   "/:id",
   idValidation,

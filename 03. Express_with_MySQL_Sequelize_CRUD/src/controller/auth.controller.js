@@ -1,5 +1,8 @@
 import { User } from "../model/index.js";
 import bcrypt from "bcrypt";
+import jwt from "jsonwebtoken";
+import dotenv from "dotenv";
+dotenv.config();
 
 //SIGN UP
 export const register = async (req, res) => {
@@ -35,7 +38,12 @@ export const login = async (req, res) => {
 
     const userData = user.toJSON();
     delete userData.password;
-    res.status(200).json({ message: "Login successfully.", userData });
+
+    const payload = { id: userData.id, email: userData.email };
+    const token = jwt.sign(payload, process.env.JWT_SECRET, {
+      expiresIn: "2m",
+    });
+    res.status(200).json({ message: "Login successfully.", token });
   } catch (error) {
     res.status(500).json({ error: error.message });
   }
