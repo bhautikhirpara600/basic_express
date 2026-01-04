@@ -1,0 +1,53 @@
+<main>
+    <form [formGroup]="signupForm" (ngSubmit)="onSubmit()" class="form-container">
+        <h2>Sign Up</h2>
+
+        <input type="text" placeholder="Name" formControlName="name" />
+        @if (name?.touched && name?.hasError('required')) {
+        <small>Name is required.</small>
+        }
+        @if (name?.touched && name?.hasError('minlength')) {
+        <small>Name must be at least 3 characters long.</small>
+        }
+
+        <input type="number" placeholder="Age" formControlName="age" />
+        @if (age?.touched && age?.hasError('required')) {
+        <small>Age is required.</small>
+        }
+        @if (age?.touched && (age?.hasError('min') || age?.hasError('max'))) {
+        <small>Age must be between 1 and 120.</small>
+        }
+
+        <input type="text" placeholder="City" formControlName="city" />
+        @if (city?.touched && city?.hasError('required')) {
+        <small>City is required.</small>
+        }
+
+        <input type="email" placeholder="Email" formControlName="email" />
+        @if (email?.touched && email?.hasError('required')) {
+        <small>Email is required.</small>
+        }
+        @if (email?.touched && email?.hasError('email')) {
+        <small>Please enter a valid email address.</small>
+        }
+
+        <input type="password" placeholder="Password" formControlName="password" />
+        @if (password?.touched && password?.hasError('required')) {
+        <small>Password is required.</small>
+        }
+        @if (password?.touched && password?.hasError('minlength')) {
+        <small>Password must be at least 6 characters long.</small>
+        }
+
+        <input type="password" placeholder="Confirm Password" formControlName="confirmPassword" />
+        @if (confirmPassword?.touched && confirmPassword?.hasError('required')) {
+        <small>Confirm password is required.</small>
+        }
+
+        @if (signupForm.touched && signupForm.hasError('passwordMismatch')) {
+        <small>Passwords do not match.</small>
+        }
+
+        <button type="submit">Register</button>
+    </form>
+</main>
