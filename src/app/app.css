@@ -1,0 +1,13 @@
+* {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+h1 {
+    background-color: orange;
+    padding: 10px;
+}
+
+h2 {
+    background-color: lightgreen;
+    padding: 8px;
+}

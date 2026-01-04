@@ -1,0 +1,20 @@
+* {
+    color: white;
+}
+
+input {
+    padding: 10px;
+    margin-inline: 20px;
+    color: black;
+}
+
+h2 {
+    color: white;
+}
+
+ul{
+    display: flex;
+    list-style: none;
+    justify-content: space-between;
+    font-size: 20px;
+}
